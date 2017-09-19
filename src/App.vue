@@ -46,16 +46,9 @@
 import {colors,centerColors} from './assets/js/colors.js';
 import { increment,TWO_PI, nElements, circleDegrees } from './assets/js/variables.js';
 
-import FlowerComponent from './components/FlowerComponent';
-
 export default {
   
   name: 'app',
-
-  components: {
-    'flower-component' : FlowerComponent,
-  },
-
   data () {
     // Definimos contenedor de elementos
     return { 
@@ -86,33 +79,22 @@ export default {
           leafHeight   = flowerRadius * 2,
           leafWidth    = Math.floor( ( (window.innerWidth / 50) - 10 ) * Math.random()) + 10;
       
-      // Contenedor de hojas
-      // let leafsComponents = [];
-      // let layers = 1 / ( Math.floor( 2 * Math.random() ) + 1 );
-
       // Template string
       let templateLeaf = '';
       // Generamos datos para hojas
       let layer = 1;
-      // for( let layer = 1 ; layer >= 0 ; layer -= layers ){
-
-        for ( let angle = 0 ; angle < TWO_PI ; angle += increment ) {
-        
-          // Posicionamiento
-          let posX = ( startX - ( leafWidth / 2 ))  + Math.cos( angle ) * flowerRadius ,
-              posY = ( startY - ( leafHeight / 2 )) + Math.sin( angle ) * flowerRadius ,
-              rotation = ( circleDegrees * index++ ) + 90;
+    
+      for ( let angle = 0 ; angle < TWO_PI ; angle += increment ) {
+      
+        // Posicionamiento
+        let posX = ( startX - ( leafWidth / 2 ))  + Math.cos( angle ) * flowerRadius ,
+            posY = ( startY - ( leafHeight / 2 )) + Math.sin( angle ) * flowerRadius ,
+            rotation = ( circleDegrees * index++ ) + 90;
 
 // IMPORTANT
-          templateLeaf += this.getStringLeaf( 0.75, colorFill, colorStroke, rotation, layer, posX, posY, leafWidth, leafHeight );
+        templateLeaf += this.getStringLeaf( 0.75, colorFill, colorStroke, rotation, layer, posX, posY, leafWidth, leafHeight );
 
-/*
-          let leafFlower = this.getLeafTemplate( 0.75, colorFill, colorStroke, rotation, layer, posX, posY, leafWidth, leafHeight );
-          // Agregamos hojas
-          leafsComponents.push( leafFlower );
-*/
-        }
-      // }
+      }
       
       // Calculo de centro
       let center_width = (flowerRadius * .9),
@@ -122,57 +104,6 @@ export default {
       let templateCenter = this.getStringCenter( 0.93, centerColor, startX, startY, center_width );
       this.template.push(`<div v-if='true'>  ${ templateLeaf } ${ templateCenter } </div>`);
 
-/*
-
-      let centerFlower = this.getCenterTemplate( 0.93, centerColor, startX, startY, center_width );
-      // Quitamos ultimo petalo
-      leafsComponents.pop();
-
-      // Agrupamos datos
-      
-      let flowerComponent = {
-        index  : new Date().valueOf(),
-        leafs  : leafsComponents,
-        center : centerFlower
-      }
-
-      // Cargamos datos
-      // this.flowers.push( flowerComponent );
-*/
-
-    },
-
-    getCenterTemplate ( opacity, centerColor, startX, startY, center_width ) {
-
-      // Configuración de estilos para flor
-      return {
-        id: new Date().valueOf(),
-        centerStyle : {
-          opacity : opacity,
-          background  : '#' + centerColors[ centerColor ],
-          borderColor : 'yellow',
-          left   : ( startX - center_width / 2 ) + 'px',
-          top    : ( startY - center_width / 2 ) + 'px',
-          width  : center_width + 'px',
-          height : center_width +'px'
-        }
-      }
-    },
-
-    getLeafTemplate ( opacity, colorFill, colorStroke, rotation, layer, posX, posY, leafWidth, leafHeight ) {
-      return {
-        id: new Date().valueOf(),
-        leafStyle : {
-          opacity   : opacity,
-          background  : '#' + colors[ colorFill ],
-          borderColor : '#' + colors[ colorStroke ],
-          transform   : 'rotate(' + rotation + 'deg) scale(' + layer + ','+ layer + ')',
-          left   : posX + 'px',
-          top    : posY + 'px',
-          width  : leafWidth + 'px',
-          height : leafHeight + 'px'
-        }
-      }
     },
 
     getStringLeaf( opacity, colorFill, colorStroke, rotation, layer, posX, posY, leafWidth, leafHeight ) {
