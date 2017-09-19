@@ -1,0 +1,57 @@
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0
+}
+
+/* Campo de Efectos vue */
+
+.flower-enter-active {
+  transition: all .3s ease;
+}
+.flower-leave-active {
+  transition: all .5s transform(0,1);
+}
+.flower-enter, .flower-leave-to {
+  opacity: 0;
+}
+
+.flower-move {
+  transition: transform 1s;
+}
+
+
+/** 
+ * Backgorund animation 
+ */
+.gradient-background {
+  width: 100wh;
+  height: 90vh;
+  color: #fff;
+  background: linear-gradient(-45deg, #B6BEFF, #FFFFD0, #FE596D, #23D5AB);
+  background-size: 400% 400%;
+  -webkit-animation: Gradient 15s ease infinite;
+  -moz-animation: Gradient 15s ease infinite;
+  animation: Gradient 15s ease infinite;
+}
+
+@-moz-keyframes Gradient {
+  0%, 100%{
+    background-position: 0% 50%
+  }
+
+  50% {
+    background-position: 100% 50%
+  }
+}
+
+@keyframes Gradient {
+  0%, 100%{
+    background-position: 0% 50%
+  }
+
+  50% {
+    background-position: 100% 50%
+  }
+}
