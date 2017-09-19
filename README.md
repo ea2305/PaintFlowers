@@ -2,6 +2,7 @@
 Flower representation with vue, and composition of String template rendering with v-html.
 
 > Flower DOM interactive
+
 > Present Gift !
 
 ## Build Setup
@@ -25,4 +26,5 @@ npm run unit
 # run all tests
 npm test
 ```
-* Happy Birthday Paula !
+> Happy Birthday Paula !
+https://paulasgift.herokuapp.com
