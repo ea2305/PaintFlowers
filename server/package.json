@@ -1,0 +1,25 @@
+{
+  "name": "paulasgift",
+  "version": "1.0.1",
+  "description": "Paula's Gift :)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node index.js"
+  },
+  "engines": {
+    "npm": "3.10.10",
+    "node": "6.10.2"
+  },
+  "keywords": [
+    "vue",
+    "css",
+    "transitions"
+  ],
+  "author": "Elihu A. Cruz",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.4",
+    "foreman": "2.0.0"
+  }
+}
